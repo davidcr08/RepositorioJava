@@ -28,27 +28,15 @@ public class EchoTCPServer {
 	}
 
 	public void protocol(Socket socket) throws Exception {
-		String message = fromNetwork.readLine();
-		System.out.println("[Server] From client:  " + message);
-		String answer = message;
-		toNetwork.println(answer);
-		String solicitudLogeoSV = fromNetwork.readLine();
-if(solicitudLogeoSV=="si") {
-	
-}
+
+		toNetwork.println("--Conectado a la red del banco---");
+		leermenu();
+		
 
 		
 	}
 
-	
-	public boolean login(String nombre) {
-		if(nombre=="Carlos") {
-			
-			return true;
-		}
-		return false;
-	}
-	
+		
 	private void createStreams(Socket socket) throws Exception {
 		toNetwork = new PrintWriter(socket.getOutputStream(), true);
 		fromNetwork = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -58,4 +46,36 @@ if(solicitudLogeoSV=="si") {
 		EchoTCPServer es = new EchoTCPServer();
 		es.init();
 	}
+	
+	public void leermenu() throws Exception {
+		String navegador = fromNetwork.readLine();
+		switch (navegador) {
+		case "1":
+			System.out.println("MENU 1 crear cuentas ");
+			toNetwork.println("Opcion1");
+
+			break;
+
+		case "2":
+			System.out.println("MENU 1 crear cuentas ");
+
+			break;
+		case "3":
+			System.out.println("MENU 1 crear cuentas ");
+
+			break;
+		case "4":
+			System.out.println("MENU 1 crear cuentas ");
+
+			break;
+		case "5":
+			System.out.println("MENU 1 crear cuentas ");
+
+			break;
+
+		default:
+			break;
+		}
+	}
+
 }

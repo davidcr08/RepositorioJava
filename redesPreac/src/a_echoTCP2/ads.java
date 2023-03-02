@@ -1,6 +1,7 @@
 package a_echoTCP2;
 
 import java.util.HashMap;
+import java.util.Scanner;
 
 public class ads {
 
@@ -24,7 +25,7 @@ public class ads {
 
 	Scanner entrada = new Scanner(System.in);
 	boolean salir = false;
-	int opcion;
+
 
 
 	while (!salir) {

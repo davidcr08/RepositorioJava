@@ -25,22 +25,18 @@ public class usuario {
 	public void init() throws Exception {
 		clientSideSocket = new Socket(SERVER, PORT);
 		createStreams(clientSideSocket);
-		protocol(clientSideSocket);
+		protocol();
 		clientSideSocket.close();
 	}
 
-	public void protocol(Socket socket) throws Exception {
+	public void protocol() throws Exception {
 
 		System.out.print("Bienvenido:");
-		System.out.println(MostrarMenu());
-	//	String fromUser = SCANNER.nextLine();
-	//	toNetwork.println(fromUser);
+		MostrarMenu( );
+		// String fromUser = SCANNER.nextLine();
+		// toNetwork.println(fromUser);
 		
-		String fromServer = fromNetwork.readLine();
-		System.out.println(fromServer);
-		
-		Desicion();
-		
+	
 
 		
 		
@@ -58,70 +54,60 @@ public class usuario {
 		ec.init();
 	}
 	
-	static public void Desicion() throws Exception {
-	
-		System.out.println("Escoge una opcion ");
-		String responsu = SCANNER.nextLine();
-		toNetwork.println(responsu);
-		System.out.println("F fiuuu");
-	}
-	
-	static public void crearCuenta() throws Exception {
-
-	}
 	
 	
 	
-	static public String MostrarMenu() {
+	
+	
+	
+	static public void MostrarMenu()throws Exception {
 		String mensaString = ("SV  Ingrese la opciones 	\n"
 				+ " 1.Crear cuenta  \n"
 				+ " 2.Depositar dinero \n"
 				+ " 3.Retirar dinero  \n"
 				+ " 4.Consultar saldo \n"
 				+ " 5.Cargar registros \n"
-				+ " 6.Menu principal");
-
-		return mensaString;
-	}
-	
-	
-	
-	
-	
-	
-public static String leerNumeroXred(Socket socket) throws Exception {
-	
-	String numero = fromNetwork.toString();
-
-	return numero;
-	
-}
-
-public static void crearCuenta(Socket socket) throws Exception{
-	
-	System.out.println(" Crear cuenta ");
-	System.out.println("Ingresa un número de cedula que deseas agregar");
-	String cedula = SCANNER.nextLine();
-	toNetwork.println(cedula);
-	//envía la cedula  si existe es true
-	
-	String bandera=fromNetwork.readLine();
-	System.out.println(fromNetwork.readLine());
-
-	if(bandera=="false") {
-		System.out.println("Cuenta ya existente");
-		/////menu y leer opcion
+				+ " 6.Menu principal \n"
+		        + "Ingresa una opcion: ");
 		
-	}else {
-		System.out.println("Cuenta creada");
-		// imprimir registro
-
+		System.out.println(mensaString);
+		String pcion = SCANNER.nextLine();
+		toNetwork.println(pcion);
+		
+		
+		switch (pcion) {
+		case "1": {
+			crearCuenta( );
+			
+			
+		}
+		default:
+			System.out.println("END");
+			//throw new IllegalArgumentException("Unexpected value: " + pcion);
+		}
+		
+		
 	}
 	
 	
 	
 	
-}
+	
+	
+	public static void crearCuenta() throws Exception {
+
+		System.out.println(" Crear cuenta ");
+		System.out.println("Ingresa un número de cedula que deseas agregar");
+		String cedula = SCANNER.nextLine();
+		toNetwork.println(cedula);
+		System.out.println(fromNetwork.readLine());
+		System.out.println("GG");
+		MostrarMenu();
+	}
+	
+	
+	
+	
 
 
 

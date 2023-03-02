@@ -27,18 +27,15 @@ public class SVBanco {
 	private Socket serverSideSocket;
 	private static PrintWriter toNetwork;
 	private static BufferedReader fromNetwork;
-	
-	HashMap<Integer, String> listaClientes = new HashMap<Integer, String>();
-
+	static HashMap<Integer, String> listaClientes = new HashMap<Integer, String>();
 	
 	/*
 	 * Parala lista convertitlo a hashmap
 	 */
-    CuentaCLiente ListaClientes[] =new CuentaCLiente[5];
-
+    
 	
 
-	public SVBanco() {
+	public SVBanco(HashMap  listaClientes ) {
 		System.out.println("Echo TCP server is running on port: " + PORT);
 	}
 
@@ -47,35 +44,24 @@ public class SVBanco {
 		while (true) {
 			serverSideSocket = listener.accept();
 			createStreams(serverSideSocket);
-			protocol(serverSideSocket);
+			protocol(listaClientes);
 		}
 	}
 
 	
 	
 	
-	public void protocol(Socket socket) throws Exception {
+	public void protocol( HashMap listaClientes) throws Exception {
 		String message = fromNetwork.readLine();
 		System.out.println("[Server] From client: "+ message);
 		//String answer = message;
 	//	toNetwork.println(menuInicio());
 		
-		String message2 = fromNetwork.toString();
-		if (message2=="1") {
-			SolicitarCrearCuenta();
-			
-		}
-		
+		String desicionMENU = fromNetwork.toString();
+		desimenu();
 	}
 
-	
-	public boolean login(String nombre) {
-		if(nombre=="Carlos") {
-			
-			return true;
-		}
-		return false;
-	}
+
 
 	private void createStreams(Socket socket) throws Exception {
 		toNetwork = new PrintWriter(socket.getOutputStream(), true);
@@ -83,7 +69,8 @@ public class SVBanco {
 	}
 
 	public static void main(String args[]) throws Exception {
-		SVBanco es = new SVBanco();
+		
+		SVBanco es = new SVBanco(listaClientes);
 		es.init();
 	}
 
@@ -141,20 +128,25 @@ public class SVBanco {
 
 	
 //////////////////////////////////////////////////////////menus////////////////////////////////////////////////////////////	
-	static public String menuInicio() {
-		String mensaString = ("SV  Ingrese la opciones 	/n 1 Crear cuenta.  /n 2.Ingresar ");
-
-		return mensaString;
-	}
-
-	static void SolicitarCrearCuenta() throws Exception {
+	static public void desimenu()  throws Exception  {
 	
+		String desiso=fromNetwork.readLine();
+	
+	switch (desiso) {
+	case "1": {SVSolicitarCrearCuenta(null);
 		
 		
-		
-
 	}
-	 
+	default:
+		System.out.println("Sale desicionMenu");
+		
+		//throw new IllegalArgumentException("Unexpected value: " + desiso);
+	}
+
+		
+	}
+
+	
 	
 //////////////////////////////////////////////////////////RETIRAR////////////////////////////////////////////////////////////	
 	/*
@@ -171,12 +163,13 @@ public class SVBanco {
 	}
 	
 	///////////////////////////////////CrearCliente///////////////////////////////////////////////////////////
-	
-	
-	static void crearCLiente()
-	
-	{
-		
 
+	static void SVSolicitarCrearCuenta(HashMap<Integer, String> ListaPersonas) throws Exception {
+
+		String cedula =fromNetwork.readLine();
+		ListaPersonas.put(ListaPersonas.size()+1,cedula.toString());
+		System.out.println("Cuenta creada "+ cedula);
+		System.out.println(ListaPersonas.toString());
+		desimenu();
 	}
 }

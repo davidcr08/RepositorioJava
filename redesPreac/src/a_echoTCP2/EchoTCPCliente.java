@@ -33,16 +33,15 @@ public class EchoTCPCliente {
 		clientSideSocket.close();
 	}
 
+	
+	//////////////////////////////////////////////////////////////////////PROTOCOLO CIEGO DE NUER 
 	public void protocol(Socket socket) throws Exception {
-		System.out.print("Ingrese un su nombre : ");
-		String MensajeUsuario = SCANNER.nextLine();
+		System.out.println(fromNetwork.readLine());
+		
+		
+		//String MensajeUsuario = SCANNER.nextLine();
 
-		toNetwork.println(MensajeUsuario);
-
-		String fromServer = fromNetwork.readLine();
-		System.out.println("[Client] From server: Hola " + fromServer);
-		System.out.println(fromServer+ " deseas agregar una contrasena");
-		String solicitudLogeo = SCANNER.nextLine();// si o no 
+		
 
 
 	}

@@ -1,4 +1,4 @@
-package cajeroClient;
+ package cajeroClient;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -31,6 +31,11 @@ public class Main {
 		//se solicita la opcion al usuario
 		int opcion=imprimirMenu();
 		
+		if(opcion>6&&opcion<0) {
+			
+			opcion=imprimirMenu();
+		}
+		
 		
 		switch(opcion){
 		case 1: retirarDinero();   break;
@@ -58,10 +63,10 @@ public class Main {
         // Crear un objeto JFileChooser
         JFileChooser chooser = new JFileChooser();
 
-        // Mostrar el diálogo para seleccionar un archivo
+        // Mostrar el diï¿½logo para seleccionar un archivo
         int resultado = chooser.showOpenDialog(null);
 
-        // Si se seleccionó un archivo, obtener su ruta
+        // Si se seleccionï¿½ un archivo, obtener su ruta
         String rutaArchivo = null;
         if (resultado == JFileChooser.APPROVE_OPTION) {
             File archivoSeleccionado = chooser.getSelectedFile();
@@ -75,7 +80,7 @@ public class Main {
         	leerArchivotxt(rutaArchivo);
         	
         } else {
-            System.out.println("No se seleccionó ningún archivo.");
+            System.out.println("No se seleccionï¿½ ningï¿½n archivo.");
         }
 		
 		
