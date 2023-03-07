@@ -18,8 +18,11 @@ public class main {
 		listaClientes.put(02, "Fercho");
 		//System.out.println(listaClientes.get(02));System.out.println(menuInicio());
 		agregarUsuario(listaClientes);
+	//
 		agregarUsuario(listaClientes);
-		
+		listaClientes.put(02, "nuevos"+"letras");
+		System.out.println(listaClientes.toString());
+
 		
 	}
 

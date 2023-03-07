@@ -18,8 +18,8 @@ public class EchoTCPCliente {
 	private static final Scanner SCANNER = new Scanner(System.in);
 	public static final String SERVER = "localhost";
 	public static final int PORT = 3400;
-	private PrintWriter toNetwork;
-	private BufferedReader fromNetwork;
+	private static PrintWriter toNetwork;
+	private static BufferedReader fromNetwork;
 	private Socket clientSideSocket;
 
 	public EchoTCPCliente() {
@@ -38,11 +38,10 @@ public class EchoTCPCliente {
 	public void protocol(Socket socket) throws Exception {
 		System.out.println(fromNetwork.readLine());
 		
-		
-		//String MensajeUsuario = SCANNER.nextLine();
+		mostrarMenu();
+		consignar();
 
-		
-
+		// String MensajeUsuario = SCANNER.nextLine();
 
 	}
 
@@ -55,4 +54,92 @@ public class EchoTCPCliente {
 		EchoTCPCliente ec = new EchoTCPCliente();
 		ec.init();
 	}
+	
+	
+
+	public static  void enviarMensaje (String mensaje) throws  Exception
+	{
+		toNetwork.println(mensaje);
+		System.out.println("Enviado " + mensaje);
+
+	}
+	
+	public  String leerMensaje () throws  Exception
+	{
+		String texto=fromNetwork.readLine();
+		System.out.println("leido" + texto);
+		return texto;
+
+	}
+
+	public static void mostrarMenu() throws Exception {
+		System.out.println("---Menu principal--- \n" + "1 Crear cuenta \n" + "2 Depositar dinero \n" 
+				+ "3 Retirar dinero \n" + "4 consultar saldo" + "5 cargar texto");
+		
+		System.out.println("Escoge un opcion");
+		String Desicion = SCANNER.nextLine();
+	
+		enviarMensaje(Desicion);
+		
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	public static void creaCuenta()  throws Exception
+	{
+		System.out.println("Ingrese la cedula:");
+		String cc = SCANNER.nextLine();
+
+		System.out.println();
+		enviarMensaje(cc);
+		System.out.println("Ingrese saldo:");
+		String saldo = SCANNER.nextLine();
+
+		enviarMensaje(saldo);
+		System.out.println("Volveras al menu");
+		mostrarMenu();
+
+	}
+	
+	
+	
+	
+	public static void consignar()  throws Exception {
+		System.out.println("Ingrese el número de cedula: ");
+		String ced = SCANNER.nextLine();
+		enviarMensaje(ced);
+
+		String existe = fromNetwork.readLine();
+		
+		
+		
+		if (existe=="true") {
+			
+			System.out.println("Ingrese el saldo a consignar: ");
+			String valor = SCANNER.nextLine();
+			toNetwork.println();
+			
+
+			System.out.println("Volveras al menu");
+			
+			mostrarMenu();
+			
+			
+		}if (existe=="false") {
+			System.out.println("Cliente no existe");
+
+			System.out.println("Volveras al menu");
+			mostrarMenu();
+			
+		}
+		
+		
+		
+	
+		System.out.println("Volveras al menu");
+		
+		
+		mostrarMenu();
+	}
+	
 }
