@@ -73,6 +73,11 @@ public class EchoTCPServer {
 
 			break;
 
+			
+			
+			
+			
+			
 		case "2":
 			//System.out.println("MENU 2 depositar dinero ");
 			System.out.println("MENU 2 depositar dinero ");
@@ -80,23 +85,27 @@ public class EchoTCPServer {
 			String cedulaP2 = fromNetwork.readLine();
 			System.out.println("leido " + cedulaP2);
 			
+			
+			
 			/*
 			 * SI EXISTE DEVUELVE TRUE
 			 */
-			if(personas.containsKey(cedulaP2)==true) {
-				toNetwork.print("true");
+			if ( equals(cedulaP2)) {
+				enviarMensaje("true");
+				System.out.println(personas.containsKey(cedulaP2));
 				System.out.println("Cliente  existe ");
-				
+
 				String saldoP2 = fromNetwork.readLine();
 				System.out.println("leido " + saldoP2);
-				Integer monto= Integer.parseInt(saldoP2);
-				
+				Integer monto = Integer.parseInt(saldoP2);
+
 				personas.put(cedulaP2, ++monto);
-				
-				
-			}else {
-				toNetwork.print("false");
-				System.out.println("Cliente no existe ");
+
+			} else {
+				System.out.println("false");
+				System.out.println("Cliente no existe");
+				toNetwork.print("False");
+				//System.out.println("nooo neas");
 
 			}
 
@@ -104,6 +113,15 @@ public class EchoTCPServer {
 			
 
 			break;
+			
+			
+			
+			
+			
+			
+			
+			
+			
 		case "3":
 			System.out.println("MENU 3 crear cuentas ");
 

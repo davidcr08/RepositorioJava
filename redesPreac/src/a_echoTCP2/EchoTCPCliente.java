@@ -60,14 +60,14 @@ public class EchoTCPCliente {
 	public static  void enviarMensaje (String mensaje) throws  Exception
 	{
 		toNetwork.println(mensaje);
-		System.out.println("Enviado " + mensaje);
+		System.out.println("Enviado: " + mensaje);
 
 	}
 	
 	public  String leerMensaje () throws  Exception
 	{
 		String texto=fromNetwork.readLine();
-		System.out.println("leido" + texto);
+		System.out.println("leido:" + texto);
 		return texto;
 
 	}
@@ -108,25 +108,26 @@ public class EchoTCPCliente {
 		System.out.println("Ingrese el número de cedula: ");
 		String ced = SCANNER.nextLine();
 		enviarMensaje(ced);
-
 		String existe = fromNetwork.readLine();
+		System.out.println(existe);
 		
-		
-		
-		if (existe=="true") {
+		if (existe.equals("true")) {
 			
+			System.out.println(fromNetwork.readLine());
 			System.out.println("Ingrese el saldo a consignar: ");
 			String valor = SCANNER.nextLine();
-			toNetwork.println();
-			
+			toNetwork.println(valor);
+
 
 			System.out.println("Volveras al menu");
 			
 			mostrarMenu();
 			
 			
-		}if (existe=="false") {
-			System.out.println("Cliente no existe");
+		}if (existe.equals("False")) {
+			System.out.println(fromNetwork.readLine());
+
+			System.out.println(existe.equals("true"));
 
 			System.out.println("Volveras al menu");
 			mostrarMenu();
