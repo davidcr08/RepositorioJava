@@ -123,15 +123,48 @@ public class EchoTCPServer {
 			
 			
 		case "3":
-			System.out.println("MENU 3 crear cuentas ");
+			System.out.println("MENU 3 Retirar dinero ");
+			
+			
+
+			String cedulaP3 = fromNetwork.readLine();
+			System.out.println("leido " + cedulaP3);
+			
+			System.out.println(personas.get(cedulaP3));
+			
+			
+			
+			
+			String chooseP3 = leerMensaje();
+
+			leermenu(chooseP3);
+			
+			
+			
 
 			break;
 		case "4":
-			System.out.println("MENU 4 crear cuentas ");
+			System.out.println("MENU 4 consultar saldo  ");
+			
+			
+			
+
+
+			String cedulaP4 = fromNetwork.readLine();
+			System.out.println("leido " + cedulaP4);
+			
+			String mens =personas.get(cedulaP4).toString();
+			
+			toNetwork.println(mens);
+			
+			
+			String chooseP4 = leerMensaje();
+
+			leermenu(chooseP4);
 
 			break;
 		case "5":
-			System.out.println("MENU 5 crear cuentas ");
+			System.out.println("MENU 5 cargar ");
 
 			break;
 
