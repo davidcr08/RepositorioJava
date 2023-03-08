@@ -76,9 +76,16 @@ public class EchoTCPServer {
 			personas.put(cedula, i);
 			System.out.println("Agregado con exito");
 
+			
+			
+			
+			System.out.println("nueva iteracion del menu");
 			String choose = leerMensaje();
 			leermenu(choose);
 
+			
+			
+			
 			break;
 
 			
@@ -120,7 +127,7 @@ public class EchoTCPServer {
 			}
 
 			
-			
+			System.out.println("nueva iteracion del menu");
 			String choose2 = leerMensaje();
 			leermenu(choose2);
 
@@ -179,6 +186,11 @@ public class EchoTCPServer {
 		//	String chooseP3 = leerMensaje();
 
 			//leermenu(chooseP3);
+			
+			
+			System.out.println("nueva iteracion del menu");
+			String choose3 = leerMensaje();
+			leermenu(choose3);
 
 			break;
 		case "4":
@@ -200,7 +212,9 @@ public class EchoTCPServer {
 			//leermenu(chooseP4);
 
 			
-			
+			System.out.println("nueva iteracion del menu");
+			String choose4 = leerMensaje();
+			leermenu(choose4);
 			
 			break;
 		case "5":

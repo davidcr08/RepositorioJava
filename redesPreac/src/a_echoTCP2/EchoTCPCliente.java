@@ -171,9 +171,10 @@ public class EchoTCPCliente {
 		
 	
 	
+		System.out.println("§  Volveras al menu    §");
 		System.out.println("Volveras al menu");
-		
 		mostrarMenu();
+		
 	}
 	
 	
@@ -213,6 +214,13 @@ public class EchoTCPCliente {
 			
 		}
 		
+		
+
+
+		System.out.println("§  Volveras al menu    §");
+		System.out.println("Volveras al menu");
+		mostrarMenu();
+		
 	}
 	
 	
@@ -221,6 +229,12 @@ public class EchoTCPCliente {
 		String ced = SCANNER.nextLine();
 		enviarMensaje(ced);
 		System.out.println("El saldo es : " +fromNetwork.readLine());
+		
+
+
+		System.out.println("§  Volveras al menu    §");
+		System.out.println("Volveras al menu");
+		mostrarMenu();
 
 	}
 	
@@ -232,6 +246,18 @@ public class EchoTCPCliente {
 		enviarMensaje("C:\\U\\RepositorioJava\\redesPreac\\src\\a_echoTCP2\\anaARC");
 		System.out.println();
 		System.out.println(fromNetwork.readLine());
+		
+
+		System.out.println("§  Volveras al menu    §");
+		
+		mostrarMenu();
+		String mostrarMenu = SCANNER.nextLine();
+		toNetwork.println(mostrarMenu);
+		
+
+		System.out.println("§  Volveras al menu    §");
+		System.out.println("Volveras al menu");
+		mostrarMenu();
 		
 		
 	}
