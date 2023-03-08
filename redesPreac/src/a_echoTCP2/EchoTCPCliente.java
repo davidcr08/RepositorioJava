@@ -39,7 +39,7 @@ public class EchoTCPCliente {
 		System.out.println(fromNetwork.readLine());
 		
 		mostrarMenu();
-		consignar();
+		consultarsaldo();
 
 		// String MensajeUsuario = SCANNER.nextLine();
 
@@ -141,6 +141,54 @@ public class EchoTCPCliente {
 		
 		
 		mostrarMenu();
+	}
+	
+	
+	public static void retirar()  throws Exception {
+		System.out.println("Ingrese el número de cedula: ");
+		String ced = SCANNER.nextLine();
+		enviarMensaje(ced);
+		
+		System.out.println("Ingrese la cantidad a retirar: ");
+		String retiro = SCANNER.nextLine();
+		enviarMensaje(retiro);
+		
+		String autorizacio;
+		autorizacio=fromNetwork.readLine();
+		System.out.println( autorizacio);
+		
+		
+		if (autorizacio=="true") {
+			
+			System.out.println(fromNetwork.readLine());
+			System.out.println("Ingrese el saldo a consignar: ");
+			String valor = SCANNER.nextLine();
+			toNetwork.println(valor);
+
+
+			System.out.println("Volveras al menu");
+			
+			mostrarMenu();
+			
+			
+		}if (autorizacio=="False") {
+			System.out.println(fromNetwork.readLine());
+
+			
+			System.out.println("Volveras al menu");
+			mostrarMenu();
+			
+		}
+		
+	}
+	
+	
+	public void consultarsaldo()throws Exception {
+		System.out.println("Ingrese el número de cedula: ");
+		String ced = SCANNER.nextLine();
+		enviarMensaje(ced);
+		System.out.println(fromNetwork.readLine());
+
 	}
 	
 }

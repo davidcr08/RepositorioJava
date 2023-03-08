@@ -36,6 +36,8 @@ public class EchoTCPServer {
 	//	System.out.println(fromNetwork.readLine());
 	String choose = leerMensaje();
 	leermenu(choose);
+	
+	personas.put("001", 15000);
 		
 	}
 
@@ -111,6 +113,8 @@ public class EchoTCPServer {
 
 			
 			
+			String choose2 = leerMensaje();
+			leermenu(choose2);
 
 			break;
 			
@@ -118,54 +122,70 @@ public class EchoTCPServer {
 			
 			
 			
-			
+
 			
 			
 			
 		case "3":
 			System.out.println("MENU 3 Retirar dinero ");
-			
-			
 
 			String cedulaP3 = fromNetwork.readLine();
 			System.out.println("leido " + cedulaP3);
+
+			String Vretiro = fromNetwork.readLine();
+			System.out.println("leido " + Vretiro);
+			int VREALretiro = Integer.parseInt(Vretiro);
+
+			// personas.get(cedulaP3)
+			if (personas.containsKey(cedulaP3) == true) {
+
+				personas.put(cedulaP3, personas.get(cedulaP3) - VREALretiro);
+
+			} else {
+				toNetwork.println("Accion no valida");
+			}
+
 			
 			System.out.println(personas.get(cedulaP3));
-			
-			
-			
-			
+
+			// vuelve a menu
+
 			String chooseP3 = leerMensaje();
 
 			leermenu(chooseP3);
-			
-			
-			
 
 			break;
 		case "4":
 			System.out.println("MENU 4 consultar saldo  ");
-			
-			
-			
-
 
 			String cedulaP4 = fromNetwork.readLine();
 			System.out.println("leido " + cedulaP4);
-			
-			String mens =personas.get(cedulaP4).toString();
-			
+
+			String mens;
+			 mens = personas.get(cedulaP4).toString();
+
 			toNetwork.println(mens);
-			
-			
+
 			String chooseP4 = leerMensaje();
 
 			leermenu(chooseP4);
 
+			
+			
+			
 			break;
 		case "5":
 			System.out.println("MENU 5 cargar ");
 
+			String direString;
+			direString=fromNetwork.readLine() ;
+			
+			
+			
+
+			String choose5 = leerMensaje();
+			leermenu(choose5);
+			
 			break;
 
 		default:
