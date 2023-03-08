@@ -1,11 +1,17 @@
 package a_echoTCP2;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.HashMap;
+
+import javax.swing.JFileChooser;
 
 public class EchoTCPServer {
 
@@ -204,6 +210,25 @@ public class EchoTCPServer {
 			direString=fromNetwork.readLine() ;
 			
 			
+				
+		        // Crear un objeto JFileChooser
+		        JFileChooser chooser = new JFileChooser();
+
+		   
+		        // Mostrar la ruta del archivo
+		        if (direString != null) {
+		            
+		        	//invocacion
+		        	leerArchivotxt(direString);
+		        	
+		        } else {
+		            System.out.println("No se seleccion� ning�n archivo.");
+		        }
+				
+				
+			}
+
+			
 			
 			
 			
@@ -213,11 +238,9 @@ public class EchoTCPServer {
 			String choose5 = leerMensaje();
 			leermenu(choose5);
 			
-			break;
+		
 
-		default:
-			break;
-		}
+		
 	}
 
 	
@@ -285,4 +308,33 @@ public class EchoTCPServer {
 
 	}
 
+	
+	private static void leerArchivotxt(String rutaArchivo) {
+		
+		//se crea el archivo a leer y la variable que almacenara su contenido
+		File archivo = new File(rutaArchivo);
+		ArrayList<String> lineas = new ArrayList<>();
+
+		try {
+			BufferedReader lector = new BufferedReader(new FileReader(archivo));
+			String linea = lector.readLine();
+			while (linea != null) {
+				lineas.add(linea);
+				linea = lector.readLine();
+			}
+			lector.close();
+		} catch (IOException e) {
+			System.out.println("Hubo un error al leer el archivo: " + e.getMessage());
+		}
+		
+
+		// Mostrar las lineas almacenadas en el ArrayList
+		for (String l : lineas) {
+			System.out.println(l);
+		}
+
+		
+		
+	}
+	
 }
