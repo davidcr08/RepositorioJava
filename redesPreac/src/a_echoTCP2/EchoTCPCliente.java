@@ -187,7 +187,7 @@ public class EchoTCPCliente {
 		System.out.println("Ingrese el número de cedula: ");
 		String ced = SCANNER.nextLine();
 		enviarMensaje(ced);
-		System.out.println(fromNetwork.readLine());
+		System.out.println("El saldo es: " +fromNetwork.readLine());
 
 	}
 	

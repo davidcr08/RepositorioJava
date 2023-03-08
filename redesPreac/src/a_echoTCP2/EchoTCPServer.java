@@ -32,12 +32,12 @@ public class EchoTCPServer {
 
 	public void protocol(Socket socket) throws Exception {
 
+		
+		personas.put("001", 15000);
 		toNetwork.println("--Conectado a la red del banco---");
 	//	System.out.println(fromNetwork.readLine());
 	String choose = leerMensaje();
 	leermenu(choose);
-	
-	personas.put("001", 15000);
 		
 	}
 
@@ -161,14 +161,17 @@ public class EchoTCPServer {
 			String cedulaP4 = fromNetwork.readLine();
 			System.out.println("leido " + cedulaP4);
 
-			String mens;
-			 mens = personas.get(cedulaP4).toString();
+			 Integer cdeulaIn= Integer.parseInt(cedulaP4);
+			
+			
+			//String mens;
+			 //mens = personas.get(cedulaP4);
 
-			toNetwork.println(mens);
+			toNetwork.println(personas.get(cedulaP4));
 
-			String chooseP4 = leerMensaje();
+			//String chooseP4 = leerMensaje();
 
-			leermenu(chooseP4);
+			//leermenu(chooseP4);
 
 			
 			
