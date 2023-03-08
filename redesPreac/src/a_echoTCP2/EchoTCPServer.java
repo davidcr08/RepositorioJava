@@ -85,23 +85,25 @@ public class EchoTCPServer {
 			System.out.println("MENU 2 depositar dinero ");
 
 			String cedulaP2 = fromNetwork.readLine();
-			System.out.println("leido " + cedulaP2);
+			System.out.println("leido cc " + cedulaP2);
 			
 			
 			
 			/*
 			 * SI EXISTE DEVUELVE TRUE
 			 */
-			if ( equals(cedulaP2)) {
-				enviarMensaje("true");
-				System.out.println(personas.containsKey(cedulaP2));
+			if ( personas.containsKey(cedulaP2)) {
+				enviarMensaje("0");
+				
 				System.out.println("Cliente  existe ");
 
 				String saldoP2 = fromNetwork.readLine();
+				
+				int saldoReal= Integer.parseInt(saldoP2);
 				System.out.println("leido " + saldoP2);
-				Integer monto = Integer.parseInt(saldoP2);
+				personas.put(cedulaP2, personas.get(cedulaP2) + saldoReal);
 
-				personas.put(cedulaP2, ++monto);
+				
 
 			} else {
 				System.out.println("false");
@@ -127,19 +129,37 @@ public class EchoTCPServer {
 			
 			
 		case "3":
-			System.out.println("MENU 3 Retirar dinero ");
+			System.out.println("MENU 3 Retirar dinero   \n");
 
 			String cedulaP3 = fromNetwork.readLine();
-			System.out.println("leido " + cedulaP3);
+			System.out.println("leido cedulaP3: " + cedulaP3);
 
+			
+			
 			String Vretiro = fromNetwork.readLine();
-			System.out.println("leido " + Vretiro);
+			System.out.println(" \n leido Vretiro: " + Vretiro);
 			int VREALretiro = Integer.parseInt(Vretiro);
 
-			// personas.get(cedulaP3)
-			if (personas.containsKey(cedulaP3) == true) {
+			
+			System.out.println("Persona data I: " + personas.get(cedulaP3));
+			 
+			
 
-				personas.put(cedulaP3, personas.get(cedulaP3) - VREALretiro);
+			// personas.get(cedulaP3)
+			if ( personas.containsKey(cedulaP3)) {
+
+				enviarMensaje("0");
+				
+				if (Integer.parseInt(Vretiro)< personas.get(cedulaP3)) {
+					System.out.println("--Retiro posible--");
+					enviarMensaje("0");
+					personas.put(cedulaP3, personas.get(cedulaP3) - VREALretiro);
+					
+					System.out.println("Persona data II: " + personas.get(cedulaP3));
+					 
+				}
+				
+				
 
 			} else {
 				toNetwork.println("Accion no valida");
@@ -150,9 +170,9 @@ public class EchoTCPServer {
 
 			// vuelve a menu
 
-			String chooseP3 = leerMensaje();
+		//	String chooseP3 = leerMensaje();
 
-			leermenu(chooseP3);
+			//leermenu(chooseP3);
 
 			break;
 		case "4":
@@ -178,10 +198,14 @@ public class EchoTCPServer {
 			
 			break;
 		case "5":
-			System.out.println("MENU 5 cargar ");
+			System.out.println("MENU 5 cargar txt ");
 
 			String direString;
 			direString=fromNetwork.readLine() ;
+			
+			
+			
+			
 			
 			
 			
@@ -196,6 +220,9 @@ public class EchoTCPServer {
 		}
 	}
 
+	
+	
+	
 
 	public  void enviarMensaje (String mensaje) throws  Exception
 	{
@@ -212,6 +239,7 @@ public class EchoTCPServer {
 
 	}
 
+	///////////////////////////////////////////////////////////////////////////////////////////
 	public void crearCuenta() throws Exception {
 		System.out.println("MENU--> Crear cuenta");
 		// String cedula=leerMensaje();

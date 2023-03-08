@@ -8,6 +8,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
+import java.util.function.Consumer;
 
 /**
  * @author Dcr
@@ -39,7 +40,7 @@ public class EchoTCPCliente {
 		System.out.println(fromNetwork.readLine());
 		
 		mostrarMenu();
-		consultarsaldo();
+	
 
 		// String MensajeUsuario = SCANNER.nextLine();
 
@@ -62,6 +63,7 @@ public class EchoTCPCliente {
 		toNetwork.println(mensaje);
 		System.out.println("Enviado: " + mensaje);
 
+		System.out.println();
 	}
 	
 	public  String leerMensaje () throws  Exception
@@ -74,12 +76,40 @@ public class EchoTCPCliente {
 
 	public static void mostrarMenu() throws Exception {
 		System.out.println("---Menu principal--- \n" + "1 Crear cuenta \n" + "2 Depositar dinero \n" 
-				+ "3 Retirar dinero \n" + "4 consultar saldo" + "5 cargar texto");
+				+ "3 Retirar dinero \n" + "4 consultar saldo  \n" + "5 cargar texto");
 		
 		System.out.println("Escoge un opcion");
 		String Desicion = SCANNER.nextLine();
 	
 		enviarMensaje(Desicion);
+		
+		switch (Desicion) {
+		case "1":
+			
+			creaCuenta();
+			break;
+
+		case "2":
+			
+			consignar();
+			break;
+		case "3":
+			retirar();
+			
+			break;
+		case "4":
+			consultarsaldo();
+			
+			break;
+		case "5":
+			
+			cargarTXT();
+			break;
+
+		default:
+			break;
+		}
+		
 		
 	}
 	
@@ -105,30 +135,33 @@ public class EchoTCPCliente {
 	
 	
 	public static void consignar()  throws Exception {
-		System.out.println("Ingrese el número de cedula: ");
+		System.out.println("Ingrese el número de cedula a consignar: ");
 		String ced = SCANNER.nextLine();
 		enviarMensaje(ced);
 		String existe = fromNetwork.readLine();
-		System.out.println(existe);
+		System.out.println(existe+"0=existe");
 		
-		if (existe.equals("true")) {
+		
+		System.out.println("Ingrese el saldo a consignar: ");
+		String valor = SCANNER.nextLine();
+		toNetwork.println(valor);
+		
+		if (existe=="0") {
 			
+			System.out.println("Has consignado "+ valor);
 			System.out.println(fromNetwork.readLine());
-			System.out.println("Ingrese el saldo a consignar: ");
-			String valor = SCANNER.nextLine();
-			toNetwork.println(valor);
 
 
-			System.out.println("Volveras al menu");
 			
-			mostrarMenu();
 			
 			
 		}if (existe.equals("False")) {
 			System.out.println(fromNetwork.readLine());
 
-			System.out.println(existe.equals("true"));
+			//System.out.println(existe.equals("true"));
 
+			System.out.println("no existe cuenta asociada"
+					+ "\n");
 			System.out.println("Volveras al menu");
 			mostrarMenu();
 			
@@ -137,8 +170,8 @@ public class EchoTCPCliente {
 		
 		
 	
+	
 		System.out.println("Volveras al menu");
-		
 		
 		mostrarMenu();
 	}
@@ -152,23 +185,23 @@ public class EchoTCPCliente {
 		System.out.println("Ingrese la cantidad a retirar: ");
 		String retiro = SCANNER.nextLine();
 		enviarMensaje(retiro);
-		
+
+		String existe = fromNetwork.readLine();
+		System.out.println(existe + " 0=existe");
+
 		String autorizacio;
-		autorizacio=fromNetwork.readLine();
-		System.out.println( autorizacio);
-		
-		
-		if (autorizacio=="true") {
-			
+		autorizacio = fromNetwork.readLine();
+		System.out.println(autorizacio);
+
+		if (existe == "0" && autorizacio == "0") {
 			System.out.println(fromNetwork.readLine());
-			System.out.println("Ingrese el saldo a consignar: ");
+		
 			String valor = SCANNER.nextLine();
 			toNetwork.println(valor);
-
-
-			System.out.println("Volveras al menu");
+				
 			
-			mostrarMenu();
+			
+			
 			
 			
 		}if (autorizacio=="False") {
@@ -183,12 +216,24 @@ public class EchoTCPCliente {
 	}
 	
 	
-	public void consultarsaldo()throws Exception {
+	public static void consultarsaldo()throws Exception {
 		System.out.println("Ingrese el número de cedula: ");
 		String ced = SCANNER.nextLine();
 		enviarMensaje(ced);
-		System.out.println("El saldo es: " +fromNetwork.readLine());
+		System.out.println("El saldo es : " +fromNetwork.readLine());
 
+	}
+	
+	
+	public static void cargarTXT()throws Exception {
+		
+		System.out.println("Ingrese la direccion del archivo: ");
+		String dir = SCANNER.nextLine();
+		enviarMensaje(dir);
+		System.out.println();
+		System.out.println(fromNetwork.readLine());
+		
+		
 	}
 	
 }
