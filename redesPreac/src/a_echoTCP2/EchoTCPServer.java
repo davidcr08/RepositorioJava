@@ -176,6 +176,11 @@ public class EchoTCPServer {
 
 			} else {
 				toNetwork.println("Accion no valida");
+				
+				System.out.println("nueva iteracion del menu");
+				String choose3 = leerMensaje();
+				leermenu(choose3);
+				
 			}
 
 			
@@ -225,14 +230,14 @@ public class EchoTCPServer {
 			
 			
 				
-		        // Crear un objeto JFileChooser
+		      
 		        JFileChooser chooser = new JFileChooser();
 
 		   
-		        // Mostrar la ruta del archivo
+		 
 		        if (direString != null) {
 		            
-		        	//invocacion
+		        	
 		        	leerArchivotxt(direString);
 		        	
 		        } else {

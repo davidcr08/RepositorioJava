@@ -243,7 +243,7 @@ public class EchoTCPCliente {
 		
 		System.out.println("Ingrese la direccion del archivo: ");
 		String dir = SCANNER.nextLine();
-		enviarMensaje("C:\\U\\RepositorioJava\\redesPreac\\src\\a_echoTCP2\\anaARC");
+		enviarMensaje(dir);
 		System.out.println();
 		System.out.println(fromNetwork.readLine());
 		
@@ -257,8 +257,8 @@ public class EchoTCPCliente {
 
 		System.out.println("§  Volveras al menu    §");
 		System.out.println("Volveras al menu");
-		mostrarMenu();
-		
+	
+	
 		
 	}
 	
