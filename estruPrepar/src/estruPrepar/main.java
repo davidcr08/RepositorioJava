@@ -82,7 +82,29 @@ lowerKey(key): Este método devuelve la clave más grande que es menor que la cl
 
 	 */
 	
-	
+	/*
+	 * LinkedHashMap<String, Integer> linkedHashMap = new LinkedHashMap<String, Integer>();
+ 
+put(key, value): Este método agrega un par clave-valor al LinkedHashMap. Si la clave ya existe, el valor se actualiza.
+
+get(key): Este método devuelve el valor correspondiente a la clave especificada.
+
+remove(key): Este método elimina la entrada correspondiente a la clave especificada.
+
+containsKey(key): Este método devuelve true si el LinkedHashMap contiene la clave especificada.
+
+containsValue(value): Este método devuelve true si el LinkedHashMap contiene el valor especificado.
+
+size(): Este método devuelve el número de pares clave-valor en el LinkedHashMap.
+
+keySet(): Este método devuelve un conjunto de todas las claves en el LinkedHashMap.
+
+values(): Este método devuelve una colección de todos los valores en el LinkedHashMap.
+
+entrySet(): Este método devuelve un conjunto de todos los pares clave-valor en el LinkedHashMap.
+
+removeEldestEntry(Map.Entry<K, V> eldest): Este método se utiliza para crear una política de eliminación de entradas antiguas en el LinkedHashMap. Debes anular este método y devolver true si se debe eliminar la entrada más antigua en el mapa. Por defecto, este método devuelve false, lo que significa que no se eliminará ninguna entrada.
+	 */
 
 
 }
