@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
@@ -11,25 +12,147 @@ import java.util.Iterator;
  */
 public class main {
 
+	
+	 ArrayList<int[]> aux=new ArrayList<int[]>();
+	 
 	public static void main(String[] args) {
 
 		// System.out.println(sumarnaturales(5));
 		// System.out.println(sumarnaturalesHastaN(9));
-         int plantilla[][] =new int[5][5];
+        int plantilla[][] =new int[5][5];
 		// inicializarIDbuses(plantilla);
-		// llenartabla(plantilla);
+		 llenartabla(plantilla);
 		// pordiaBusMasPasajeros(3, plantilla);
 		// Punto 1 desdeNhasta1(8);
 		// sumarnaturalesHastaNRecursiva(45, 0);
 		// lecturaypotnecia(2,4,0);
 	     //  inicializarCuarto(5);
-		inicializarIDbusesRecursiva(plantilla, 0);
-
+	//	inicializarIDbusesRecursiva(plantilla, 0);
+		// System.out.println(plantilla[2][1]);
+		 ////Parcial/////////////////
+		
+		 
+		// recorrerArreglo2d(plantilla, 0, 0, 0);
+		 int plantillaPARES[] =new int[5];
+		 plantillaPARES[0]=6;
+		 plantillaPARES[1]=5;
+		 plantillaPARES[2]=1;
+		 plantillaPARES[3]=2;
+		 plantillaPARES[4]=8;
+		 System.out.println(obtenercantidadPares(plantillaPARES, 0,0));
+		 
+		
+		 int plantillaPARESRespuesta[] =new int[obtenercantidadPares(plantillaPARES, 0,0)];
+		 plantillaPARESRespuesta=llenarTablapares(plantillaPARES, plantillaPARESRespuesta, 0, 0, 0);
+		 
 	}
+		 
+	//	if (arreglo.length > contador) {
+	//	System.out.print(" --<" + arreglo[contador] + ">--");
+	   // recorrerArregloRecur(arreglo, contador + 1);
+	//}
+		 /*
+		  * Sumar los elementos de un arreglo bidimensional recursivamene
+		  */
+	
+			public static void recorrerArreglo2d(int arreglo[][], int contadorX, int contadorY, int sumatoria) {
+				
+				if (arreglo.length > contadorX) {
+				//	System.out.println(arreglo[contadorX][contadorY]);
+					sumatoria = sumatoria  + arreglo[contadorX][contadorY];
+					System.out.println("X"+contadorX +":  " + "Y:"+contadorY +": "+ arreglo[contadorX][contadorY]);
+					
+					System.out.println("Sumatoria es = "+ sumatoria);
+					
+					recorrerArreglo2d(arreglo, contadorX+1, contadorY, sumatoria);
+				}
+				if (arreglo.length == contadorX && arreglo.length> contadorY ) {
+					if (arreglo.length== contadorY) {
+						System.out.println("Sumatoria es = "+ sumatoria);
+						
+					}
+					recorrerArreglo2d(arreglo, 0, contadorY+1, sumatoria);
+				}
+				
+			}
+			
+			
+			
+			/*
+			 * que reciba un conjunto de int devuelva el un conunto con solo los pares 
+			 */
+			//confirma si es par
+			static boolean esPAR(int numero) {
+				if (numero%2==0) {
+					return true;
+				}
+				return false;
+			}
+			
+			static int obtenercantidadPares( int plantillaPARES[], int contador, int Cpares ) {
+				
+				
+				if (contador<plantillaPARES.length-1) {
+					if (esPAR(plantillaPARES[contador])) {
+						Cpares++;
+						contador++;
+						
+					
+						
+					//	System.out.println(Cpares);
+						obtenercantidadPares(plantillaPARES, contador, Cpares);
+						
+					}
+					if (esPAR(plantillaPARES[contador])==false) {
+						
+						//System.out.println(Cpares);
+						contador++;
+						obtenercantidadPares(plantillaPARES, contador, Cpares);
+						
+					}
+					
+				}
+				
+				
+				return Cpares;
+			}
+			
+			
+			public static void llenarTablapares(int plantillaPARES[], int plantillaPARESRespuesta[], int contador,
+					int Cpares, int contaaux) {
+
+				if (contador < plantillaPARES.length - 1) {
+					if (esPAR(plantillaPARES[contador])) {
+						Cpares++;
+						contador++;
+						plantillaPARESRespuesta[contaaux] = plantillaPARES[contador];
+
+						// System.out.println(Cpares);
+						obtenercantidadPares(plantillaPARES, contador, Cpares);
+
+					}
+					if (esPAR(plantillaPARES[contador]) == false) {
+
+						// System.out.println(Cpares);
+						contador++;
+						obtenercantidadPares(plantillaPARES, contador, Cpares);
+
+					}
+
+				}
+			}
+
 ///////////////////////////////PUNTOS///////////////////////////////////////////////////////////////////////////////////
 	/*
 	 * Punto 1 Construya una función para sumar los números naturales hasta N de
 	 * forma recursiva. EL dato N pasará como parámetro.
+	 * 
+	 * 
+	 * if (arreglo.length > contadorX) {
+					sumatoria = +arreglo[contadorX][contadorY];
+					System.out.println("X"+contadorX +":  " + "Y:"+contadorY );
+					recorrerArreglo2d(arreglo, contadorX++, contadorY, sumatoria);
+				}
 	 */
 
 	static public int sumarnaturalesHastaN(int valorARecibir) {
@@ -45,6 +168,9 @@ public class main {
 
 	int valorDelaSuma = 0;
 
+	
+	
+	
 	static public void sumarnaturalesHastaNRecursiva(int valorARecibir, int valorDelaSuma) {
 
 		if (valorDelaSuma < valorARecibir) {
