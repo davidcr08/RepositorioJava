@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * 
  */
@@ -7,11 +9,17 @@
  *
  */
 public class main {
-
+/*
+ * agregar a una coleccions
+ */
 	
 	
 
 	public static  void main(String[] args) {
+		
+		
+		
+		
 		// TODO Auto-generated method stub
 		//STRING
 		micalss<String> clase1 = new micalss<String>("55","55", "Apache");
@@ -23,11 +31,23 @@ public class main {
 		//INT
 		intclase<Integer> numeros1 = new intclase<Integer>(88,55, 44);
 	
-		System.out.println(numeros1.toString()+" Datos :");
+		System.out.println(numeros1.toString()+"  Datos :");
 		System.out.println(numeros1.getVar1());
 		System.out.println(numeros1.getVar2());
 		System.out.println(numeros1.getVar3());
 
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
