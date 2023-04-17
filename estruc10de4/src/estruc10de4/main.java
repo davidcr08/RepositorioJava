@@ -19,7 +19,7 @@ public class main {
 
 		String Desicion="0";
 		Desicion=leerNumConsola("Ingrese un número: ");
-		ArrayList<String> nombreArrayList = new ArrayList<String>();
+		ArrayList<libro<T, U, V>> nombreArrayList = new ArrayList<String>();
 
 		
 		
@@ -56,6 +56,9 @@ public class main {
 		System.err.println(nombre);
 		return nombre;
 	}
+	
+	
+	
 	
 	
 }
