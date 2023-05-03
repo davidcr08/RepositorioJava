@@ -23,8 +23,14 @@ public class main {
 			
 		}
 		System.out.println(arbolBin.toString());
+		System.out.println("pre");
 		arbolBin.preOrderTraversal();
-		
+		System.out.println();
+		System.out.println("post");
+		arbolBin.postOrderTraversal(arbolBin.getRoot());
+		System.out.println();
+		System.out.println("Inorden");
+		arbolBin.inOrderTraversal(arbolBin.getRoot());
 	}
 
 }

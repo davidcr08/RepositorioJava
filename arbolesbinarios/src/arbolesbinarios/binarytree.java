@@ -10,8 +10,18 @@ package arbolesbinarios;
 public class binarytree {
 
 	 private Node root;
+	 
+	 
 
-	    private class Node {
+	    public Node getRoot() {
+		return root;
+	}
+
+	public void setRoot(Node root) {
+		this.root = root;
+	}
+
+		private class Node {
 	        private int value;
 	        private Node leftChild;
 	        private Node rightChild;
@@ -62,9 +72,24 @@ public class binarytree {
 	    private void preOrderHelper(Node node) {
 	        if (node != null) {
 	            System.out.print(node.value + " ");
-	            System.out.println();
 	            preOrderHelper(node.leftChild);
 	            preOrderHelper(node.rightChild);
+	        }
+	    }
+	    
+	    public void postOrderTraversal(Node node) {
+	        if (node != null) {
+	            postOrderTraversal(node.leftChild);
+	            postOrderTraversal(node.rightChild);
+	            System.out.print(node.value + " ");
+	        }
+	    }
+	    
+	    public void inOrderTraversal(Node node) {
+	        if (node != null) {
+	            inOrderTraversal(node.leftChild);
+	            System.out.print(node.value + " ");
+	            inOrderTraversal(node.rightChild);
 	        }
 	    }
 
